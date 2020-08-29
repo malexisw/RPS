@@ -1,28 +1,89 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul class="title">
+      <li class="rock">Rock</li>  
+      <li class="paper">Paper</li>
+      <li class="scissors">Scissors</li>
+    </ul>
+
+    <router-view/>
   </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
+:root{
+  font-size: 16px;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6rem;
+  --bg-primary: #18181b;
+  --bg-secondary: #ffffff;
+  --text-primary: rgb(239, 239, 241);
+  --text-secondary: #000000;
+  --transition-speed: 0.3s
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    list-style: none;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
+body{
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.title{
+  position: relative;
+  top: 25px;
+  left: 45%;
+  transform: translateX(-50%);
+  width: max-content;
+  letter-spacing: 5px;
+}
+
+.rock,.paper,.scissors{
+  text-transform: uppercase;
+  font-size: 32px;
+  line-height: 35px;
+}
+
+.paper{
+  margin-left: 30px;
+}
+
+.scissors{
+  margin-left: 60px;
+}
+
+.rock::after, .paper::after, .scissors::after{
+  content: "";
+  margin-top: .1em;
+  display: block;
+  width: 1em;
+  height: 3px;
+}
+
+.rock::after{
+    background-color: red;
+}
+
+.paper::after{
+    background-color: green;
+}
+
+.scissors::after{
+    background-color: blue;
+}
+
 </style>
