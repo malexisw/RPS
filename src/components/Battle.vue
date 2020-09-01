@@ -24,7 +24,7 @@
         </div>
         <div :class="contentIa">
           <img :class="imageIa" :src="require('../assets/' + actionIa.image)">
-          <div class="text text-ia">
+          <div :class="text">
             {{ actionIa.name }}
           </div>
         </div>
@@ -72,9 +72,12 @@ export default {
     },
     imageY(){
       return "image-you image-"+ this.actionYou.name
+    },
+    text(){
+      return "text text-ia t-"+ this.actionIa.name
     }
   },
-  mounted(){
+  created(){
     const size = Object.keys(this.actions)
     for(let i=0; i<size.length;i++){
       if(this.actions[i].name == localStorage.getItem("action")){
@@ -83,7 +86,8 @@ export default {
     }
     const choice = Math.floor(Math.random() * 3)
     this.actionIa = this.actions[choice]
-
+  },
+  mounted(){
     this.calcScore()
   },
   methods:{
@@ -95,7 +99,7 @@ export default {
     calcScore(){
       if((this.actionYou.name == "rock" && this.actionIa.name == "paper") || (this.actionYou.name == "paper" && this.actionIa.name == "scissors") || (this.actionYou.name == "scissors" && this.actionIa.name == "rock")){
         this.decScore();
-        this.result = "Lose"
+        this.result = "Lost"
       } else if((this.actionYou.name == "rock" && this.actionIa.name == "scissors") || (this.actionYou.name == "paper" && this.actionIa.name == "rock") || (this.actionYou.name == "scissors" && this.actionIa.name == "paper")){
         this.incScore();
         this.result = "Win"
@@ -115,8 +119,7 @@ export default {
       this.$router.push({
         name:'Choice',
       })
-    },
-  
+    }
 }
 }
 </script>
@@ -206,25 +209,25 @@ export default {
 }
 
 .text{
+  position: relative;
+  top: 58%;
   text-transform: uppercase;
   color: var(--bg-primary);
   font-size: 125px;
   font-weight: 700;
-  text-align: center;
   height: max-content;
 }
 
 .text-Y{
-  position: relative;
-  top: 58%;
-  text-align: right;
-  width: 55%;
+  width: 100%;
 }
 
 .text-ia{
-  position: relative;
-  top: 58%;
-  right: 10%;
+  width: 100%;
+}
+
+.t-scissors{
+  right: 20%;
 }
 
 .versus{

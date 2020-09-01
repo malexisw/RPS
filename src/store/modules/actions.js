@@ -26,25 +26,24 @@ const getters = {
 
 const actions = {
     fetchScore({ commit }, i){
-        const response = i
-        commit('setScore', response)
+        commit('setScore', i)
     },
     incScore({ commit }){
-        const response = state.score+1
-        commit('setScore', response);
+        commit('incScore');
     },
     decScore({ commit }){
-        const response = state.score-1
-        commit('setScore', response);
+        commit('decScore');
     },
     resetScore({ commit }){
-        const response = 0
-        commit('setScore', response);
+        commit('resetScore');
     }
 };
 
 const mutations = {
     setScore: (state, score) => (state.score = score),
+    incScore: (state) => state.score++,
+    decScore: (state) => state.score--,
+    resetScore: (state) => state.score = 0
 }
 
 export default {

@@ -1,24 +1,7 @@
 # rps
 
-## Project setup
-```
-npm install
-```
+## Game
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+It's a webApp of a Rock paper scissors game.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Created with VueJS 

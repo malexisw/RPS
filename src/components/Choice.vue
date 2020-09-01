@@ -46,7 +46,6 @@ export default {
     },
     choice(i){
       localStorage.setItem("action", this.actions[i].name)
-      localStorage.setItem("image",this.actions[i].image)
       this.$router.push({
         name:'Battle',
       })
