@@ -6,28 +6,30 @@
         <div class="title-battle">
           You
         </div>
-        <div :class="contentY">
-          <img :class="imageY" :src="require('../assets/' + actionYou.image)">
-          <div class="text text-Y">
-            {{ actionYou.name }}
+          <div :class="contentY">
+            <img :class="imageY" :src="require('../assets/' + actionYou.image)">
+            <div class="text text-Y">
+              {{ actionYou.name }}
+            </div>
           </div>
-        </div>
     </div>
 
-    <div class="versus">
-      VS
-    </div>
+
+      <div class="versus">
+        VS
+      </div>
+
 
       <div class="game-content ia">
         <div class="title-battle">
           i.a
         </div>
-        <div :class="contentIa">
-          <img :class="imageIa" :src="require('../assets/' + actionIa.image)">
-          <div :class="text">
-            {{ actionIa.name }}
+          <div :class="contentIa">
+            <img :class="imageIa" :src="require('../assets/' + actionIa.image)">
+            <div :class="text">
+              {{ actionIa.name }}
+            </div>
           </div>
-        </div>
       </div>
     </div>
 
@@ -158,11 +160,15 @@ export default {
 }
 
 .contentA.Y{
+  left: -1000px;
   clip-path: polygon(0 0, 100% 50%, 100% calc(100% - 2.5vw), 0 100%);
+  animation: slideLeft .5s forwards;
 }
 
 .contentA.IA{
+  right: -1000px;
   clip-path: polygon(0 50%, 100% 0%,100% 100%, 0 calc(100% - 2.5vw));
+  animation: slideRight 1s forwards;
 }
 
 .rock-action{
@@ -237,6 +243,8 @@ export default {
   position: relative;
   text-align: center;
   top: 50%;
+  height: fit-content;
+  animation: spin 1s forwards;
 }
 
 .result{
@@ -269,6 +277,7 @@ export default {
   font-size: 80px;
   text-transform: uppercase;
   line-height: 150px;
+  animation: fadeIn 1.2s forwards;
 }
 
 .continue{
@@ -287,6 +296,35 @@ export default {
 
 .restart{
   font-size: 50px;
+}
+
+@keyframes slideLeft {
+  100%{left: 0;}
+}
+
+@keyframes slideRight {
+  50%{right: -1000px;}
+  100%{right: 0;}
+}
+
+@keyframes spin {
+  0%{
+    opacity: 0;
+  }
+  30%{
+    opacity: 0;
+    -webkit-transform: rotate(0deg);
+  }
+  100%{
+    opacity: 1;
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  0%{opacity: 0;}
+  80%{opacity: 0;}
+  100%{opacity: 1;}
 }
 
 </style>
