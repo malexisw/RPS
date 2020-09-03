@@ -8,7 +8,7 @@
         </div>
           <div :class="contentY">
             <img :class="imageY" :src="require('../assets/' + actionYou.image)">
-            <div class="text text-Y">
+            <div :class="textY">
               {{ actionYou.name }}
             </div>
           </div>
@@ -26,7 +26,7 @@
         </div>
           <div :class="contentIa">
             <img :class="imageIa" :src="require('../assets/' + actionIa.image)">
-            <div :class="text">
+            <div :class="textIa">
               {{ actionIa.name }}
             </div>
           </div>
@@ -75,8 +75,11 @@ export default {
     imageY(){
       return "image-you image-"+ this.actionYou.name
     },
-    text(){
+    textIa(){
       return "text text-ia t-"+ this.actionIa.name
+    },
+    textY(){
+      return "text text-Y t-"+ this.actionIa.name
     }
   },
   created(){
@@ -129,23 +132,19 @@ export default {
 
 <style scoped>
 .battle{
-  height: 85vh;
-  overflow: hidden;
+  height: 70vh;
 }
 .game{
   display: flex;
-  height: 70vh;
+  height: 50vh;
 }
 
 .game-content{
-  width: 50%;
   position: relative;
-  top: 100px;
 }
 
 .title-battle{
   text-align: center;
-  font-size: 50px;
   font-weight: 700;
   text-transform: uppercase;
 }
@@ -153,7 +152,6 @@ export default {
 .contentA{
   position: absolute;
   z-index: -1;
-  height: 250px;
   position: relative;
   top: 10%;
   display: flex;
@@ -185,18 +183,8 @@ export default {
   transform: scaleX(-1);
 }
 
-.image-paper,.image-scissors{
-  width: 200px;
-  height: 200px;
-}
-
 .image-paper{
   top: 50px;
-}
-
-.image-rock{
-  height: 250px;
-  width: 250px;
 }
 
 .image-scissors{
@@ -216,10 +204,8 @@ export default {
 
 .text{
   position: relative;
-  top: 58%;
   text-transform: uppercase;
   color: var(--bg-primary);
-  font-size: 125px;
   font-weight: 700;
   height: max-content;
 }
@@ -238,11 +224,8 @@ export default {
 
 .versus{
   z-index: 1;
-  font-weight: 900;
-  font-size: 150px;
   position: relative;
   text-align: center;
-  top: 50%;
   height: fit-content;
   animation: spin 1s forwards;
 }
@@ -250,21 +233,15 @@ export default {
 .result{
   text-align: center;
   font-weight: bold;
-  line-height: 100px;
   position: relative;
-  top: -200px;
   z-index: 2;
 }
 
 .score{
   border: 2px solid var(--text-primary);
   width: max-content;
-  padding: 10px 15px;
-  font-size: 36px;
   text-transform: uppercase;
   position: absolute;
-  left: 65%;
-  top: 70px;
 }
 
 .continue,.restart{
@@ -274,14 +251,11 @@ export default {
 }
 
 .text-result{
-  font-size: 80px;
   text-transform: uppercase;
-  line-height: 150px;
   animation: fadeIn 1.2s forwards;
 }
 
 .continue{
-  font-size: 90px;
   border: 3px solid var(--text-primary);
   padding: 5px 15px;
 }
@@ -292,10 +266,6 @@ export default {
 
 .continue:active,.restart:active{
   opacity: 0.5;
-}
-
-.restart{
-  font-size: 50px;
 }
 
 @keyframes slideLeft {
@@ -325,6 +295,169 @@ export default {
   0%{opacity: 0;}
   80%{opacity: 0;}
   100%{opacity: 1;}
+}
+
+@media only screen and (min-width: 800px) {
+  .score{
+    padding: 10px 15px;
+    font-size: 36px;
+    left: 65%;
+    top: 70px;
+  }
+
+  .game-content{
+    top: 100px;
+    width: 45%;
+  }
+
+  .title-battle{
+    font-size: 50px;
+  }
+
+  .versus{
+    font-weight: 900;
+    font-size: 150px;
+    top: 70%;
+  }
+
+  .contentA{
+    height: 250px;
+  }
+
+  .image-paper,.image-scissors{
+    width: 200px;
+    height: 200px;
+  }
+
+  .image-ia.image-scissors,.image-ia.image-paper,.image-ia.image-rock{
+    position: relative;
+    left: 70%;
+  }
+
+  .image-rock{
+    height: 250px;
+    width: 250px;
+  }
+
+  .text{
+    top: 58%;
+    font-size: 125px;
+  }
+
+  .result{
+    line-height: 100px;
+  }
+
+  .text-result{
+    font-size: 80px;
+    line-height: 150px;
+  }
+
+  .continue{
+    font-size: 90px;
+  }
+
+  .restart{
+    font-size: 50px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .battle{
+    overflow-x: hidden;
+  }
+
+  .score{
+    padding: 5px 10px;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 170px;
+  }
+
+  .game-content{
+    top: 150px;
+  }
+
+  .title-battle{
+    font-size: 32px;
+  }
+
+  .versus{
+    font-weight: 900;
+    font-size: 50px;
+    top: 350px;
+  }
+
+  .contentA{
+    height: 200px;
+  }
+
+  .image-paper,.image-scissors{
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-ia.image-scissors,.image-ia.image-paper,.image-ia.image-rock{
+    position: relative;
+    left: 140px;
+  }
+
+  .image-rock{
+    height: 100px;
+    width: 100px;
+    top: 20px;
+  }
+
+  .text{
+    top: 70%;
+    font-size: 45px;
+  }
+
+  .text-Y{
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .text-Y.t-scissors{
+    right: 70%;
+  }
+
+  .text-ia{
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .text-ia.t-scissors{
+    right: 75%;
+  }
+
+  .result{
+    line-height: 40px;
+    top: -50px;
+    z-index: 2;
+  }
+
+  .text-result{
+    font-size: 42px;
+    line-height: 100px;
+  }
+
+  .continue{
+    font-size: 50px;
+  }
+
+  .restart{
+    position: relative;
+    top: 25px;
+    font-size: 30px;
+  }
+
+  .game-content{
+    width: 44%;
+    position: relative;
+  }
+
 }
 
 </style>

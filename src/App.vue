@@ -17,9 +17,9 @@
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6rem;
   --bg-primary: #18181b;
-  --bg-secondary: #ffffff;
+  --bg-secondary: #111113;
   --text-primary: rgb(239, 239, 241);
-  --text-secondary: #000000;
+  --text-secondary: #111113;
   --transition-speed: 0.3s
 }
 

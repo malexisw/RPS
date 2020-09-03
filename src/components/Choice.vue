@@ -8,7 +8,7 @@
     </div>
     <div class="content">
       <div :class="btn(index)" v-for="(action, index) in actions" :key="action.id" @click="choice(index)">
-        <img :class="img(index)" :src="require('../assets/' + action.image)" width="200">
+        <img :class="img(index)" :src="require('../assets/' + action.image)">
         <div :class="text(index)">
           {{ action.name }}
         </div>
@@ -95,22 +95,11 @@ export default {
 }
 
 .btn-rock{
-    background: red;
+  background: red;
 }
 
 .btn-scissors{
   background: blue;
-}
-
-.img-paper{
-  position: relative;
-  left: 80%;
-  top: 20px;
-}
-
-.img-rock, .img-scissors{
-  position: relative;
-  left: 10%;
 }
 
 .img-scissors{
@@ -118,22 +107,12 @@ export default {
   bottom: 10px;
 }
 
-.img-rock{
-  height: 250px;
-  width: 250px;
-  bottom: 40px;
-}
-
 .text-action{
   position: relative;
-  left: 15%;
-  top: 45%;
   text-transform: uppercase;
   color: var(--bg-primary);
-  font-size: 190px;
   font-weight: 700;
   text-align: center;
-  width: 50%;
 }
 
 .content{
@@ -145,24 +124,111 @@ export default {
 
 .title-choice{
   font-weight: bold;
-  font-size: 50px;
   color: var(--text-primary);
   text-transform: uppercase;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 250px;
 }
 
 .score{
   border: 2px solid var(--text-primary);
   width: max-content;
-  padding: 10px 15px;
-  font-size: 36px;
   text-transform: uppercase;
   position: absolute;
-  left: 65%;
-  top: 70px;
 }
 
+@media only screen and (max-width: 800px) {
+  .score{
+    padding: 5px 10px;
+    font-size: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 170px;
+  }
+
+  .title-choice{
+    font-size: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+    width: 90%;
+  }
+
+  .img-paper{
+    position: relative;
+    left: 65%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 150px;
+    height: 150px;
+  }
+
+  .img-rock, .img-scissors{
+    position: relative;
+    left: 10px;
+  }
+
+  .img-rock, .img-scissors{
+    height: 150px;
+    width: 150px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .text-action{
+    right: 5%;
+    top: 45%;
+    font-size: 70px;
+    width: 100%;
+  }
+
+  .text-paper{
+    text-align: left;
+    right: 100px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .score{
+    padding: 10px 15px;
+    font-size: 36px;
+    left: 65%;
+    top: 70px;
+  }
+
+  .title-choice{
+    font-size: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 250px;
+  }
+
+  .img-paper{
+    position: relative;
+    left: 80%;
+    top: 20px;
+    width: 200px;
+  }
+
+  .img-scissors{
+    width: 200px;
+  }
+
+  .img-rock, .img-scissors{
+    position: relative;
+    left: 10%;
+  }
+
+  .img-rock{
+    height: 250px;
+    width: 250px;
+    bottom: 40px;
+  }
+
+  .text-action{
+    left: 15%;
+    top: 45%;
+    font-size: 190px;
+    width: 50%;
+  }
+}
 </style>

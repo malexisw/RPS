@@ -4,7 +4,7 @@
 
     <div class="illustration">
       <div class="rock-img">
-        <img src="../assets/rock.png" width="200">
+        <img src="../assets/rock.png">
       </div>
       <div class="paper-img">
         <img src="../assets/paper.png" width="200">
@@ -45,11 +45,8 @@ export default {
   text-align: center;
   align-items: center;
   justify-content: center;
-}
-
-.rock-img, .paper-img, .scissors-img{
-  width: 300px;
-  height: 200px;
+  background: var(--bg-secondary);
+  border-radius: 100px;
 }
 
 .rock-img, .paper-img{
@@ -82,5 +79,48 @@ export default {
 
 .btn-start:active{
   opacity: 0.5;
+}
+
+@media only screen and (max-width: 800px) {
+  .rock-img, .paper-img, .scissors-img{
+    width: 250px;
+    height: 100px;
+  }
+  .rock-img img{
+    width: 125px;
+  }
+
+  .scissors-img img{
+    width: 100px;
+    position: relative;
+    top: 5px;
+  }
+
+  .paper-img img{
+    width: 100px;
+    position: relative;
+    top: 10px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .rock-img, .paper-img, .scissors-img{
+    width: 500px;
+    height: 200px;
+  }
+  .rock-img img{
+    width: 250px;
+  }
+
+  .scissors-img img{
+    width: 190px;
+    position: relative;
+    top: 5px;
+  }
+
+  .paper-img img{
+    position: relative;
+    top: 20px;
+  }
 }
 </style>
