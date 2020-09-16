@@ -63,6 +63,7 @@ export default {
     actions: 'allActions',
     score: 'allScore'
     }),
+    //set class depending on the action selected previously
     contentY(){
       return "contentA Y " + this.actionYou.name + "-action"
     },
@@ -83,16 +84,21 @@ export default {
     }
   },
   created(){
+    //get the size of the object actions
     const size = Object.keys(this.actions)
+    //get the action with the same name and put it in actionYou
     for(let i=0; i<size.length;i++){
       if(this.actions[i].name == localStorage.getItem("action")){
         this.actionYou = this.actions[i]
       }
     }
+    //get a random number between 0 and 2
     const choice = Math.floor(Math.random() * 3)
+    //set action Ia with the random number chosen ( 0 = rock, 1 = paper, 2 = scissors)
     this.actionIa = this.actions[choice]
   },
   mounted(){
+    //calcul the score at the creation of the page
     this.calcScore()
   },
   methods:{
@@ -100,24 +106,31 @@ export default {
         incScore:'incScore',
         decScore:'decScore',
         resetScore:'resetScore'
-      }),
+    }),
+
+    //calcul the score
     calcScore(){
       if((this.actionYou.name == "rock" && this.actionIa.name == "paper") || (this.actionYou.name == "paper" && this.actionIa.name == "scissors") || (this.actionYou.name == "scissors" && this.actionIa.name == "rock")){
+        //-1 on the score
         this.decScore();
         this.result = "Lost"
       } else if((this.actionYou.name == "rock" && this.actionIa.name == "scissors") || (this.actionYou.name == "paper" && this.actionIa.name == "rock") || (this.actionYou.name == "scissors" && this.actionIa.name == "paper")){
+        //+1 on the score
         this.incScore();
         this.result = "Win"
       } else {
         this.result = "Draw"
       }
+      //save the score in the local storage to get it even if the player quit the game and comeback
       localStorage.setItem("score", this.score)
     },
+    //go to the previous page
     again(){
       this.$router.push({
         name:'Choice',
       })
     },
+    //reset the score to 0 and go to the previous page
     restart(){
       this.resetScore()
       localStorage.removeItem("score")
@@ -136,7 +149,7 @@ export default {
 }
 .game{
   display: flex;
-  height: 50vh;
+  height: 60vh;
 }
 
 .game-content{
@@ -400,7 +413,7 @@ export default {
 
   .image-ia.image-scissors,.image-ia.image-paper,.image-ia.image-rock{
     position: relative;
-    left: 140px;
+    left: 40%;
   }
 
   .image-rock{
@@ -411,30 +424,20 @@ export default {
 
   .text{
     top: 70%;
-    font-size: 45px;
+    font-size: 32px;
   }
 
   .text-Y{
-    right: 50%;
-    transform: translateX(50%);
-  }
-
-  .text-Y.t-scissors{
-    right: 70%;
+    position: relative;
+    left: -100px;
   }
 
   .text-ia{
-    right: 50%;
-    transform: translateX(50%);
-  }
-
-  .text-ia.t-scissors{
-    right: 75%;
+    left: -100px;
   }
 
   .result{
     line-height: 40px;
-    top: -50px;
     z-index: 2;
   }
 

@@ -24,17 +24,21 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 
   name: 'Choice',
+  //get action and score
   computed: mapGetters({
     actions: 'allActions',
     score: 'allScore'
   }),
   mounted(){
+    //initialise score
     this.initScore()
   },
   methods:{
+    //get action
     ...mapActions({
       fetchScore:'fetchScore'
     }),
+    //set class depending of the action
     btn(i){
       return "shape btn-" + this.actions[i].name
     },
@@ -44,12 +48,14 @@ export default {
     img(i){
       return "img-action img-" + this.actions[i].name
     },
+    //set the action selected in the localstorage and go to the other page
     choice(i){
       localStorage.setItem("action", this.actions[i].name)
       this.$router.push({
         name:'Battle',
       })
     },
+    //set the score if the player has one already 
     initScore(){
       if(localStorage.getItem("score") !== null){
         const sc = localStorage.getItem("score")
